@@ -7,13 +7,13 @@ dev-repo: "http://github.com/ocamllabs/ocaml-ctypes.git"
 bug-reports: "http://github.com/ocamllabs/ocaml-ctypes/issues"
 license: "MIT"
 build: [
-  [make
+  [CC=x86_64-w64-mingw32-gcc.exe make
     "XEN=%{mirage-xen:enable}%"
     "COVERAGE=true" {bisect_ppx:installed}
     "libffi.config"
     "ctypes-base"
     "ctypes-stubs"]
-  [make "XEN=%{mirage-xen:enable}%" "ctypes-foreign"] {ctypes-foreign:installed}
+  [CC=x86_64-w64-mingw32-gcc.exe make "XEN=%{mirage-xen:enable}%" "ctypes-foreign"] {ctypes-foreign:installed}
 ]
 install: [
   [make "install" "XEN=%{mirage-xen:enable}%"]
